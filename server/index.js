@@ -3,11 +3,17 @@ import BodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import postRoutes from "./routers/posts.js"
+
 const app = express()
+
+
 
 app.use(BodyParser.json({ limit: "30mb", extended: true }));
 app.use(BodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+app.use('/posts', postRoutes)
 
 const CONNECTION_URL = "mongodb+srv://kaytech:Kaytech123@cluster0.9ktxi.mongodb.net/KayTechDB?retryWrites=true&w=majority"
 const PORT = process.env.PORT || 5000
